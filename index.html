@@ -33,7 +33,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px; /* Increased width for new layout */
             margin: auto;
             background: var(--white-color);
             padding: 2rem;
@@ -67,6 +67,51 @@
             font-size: 3rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
+
+        /* --- NEW: Main Layout for two columns --- */
+        .main-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .calendar-section {
+            flex: 3;
+            min-width: 600px;
+        }
+        .info-panel {
+            flex: 2;
+            min-width: 300px;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .info-panel h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            color: var(--dark-header-color);
+        }
+        .info-panel ol, .info-panel ul {
+            padding-left: 20px;
+            line-height: 1.7;
+        }
+        .info-panel li {
+            margin-bottom: 1rem;
+        }
+        .info-highlight {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffeeba;
+            border-radius: 4px;
+        }
+        .info-highlight p {
+            margin: 0;
+            font-weight: bold;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -133,19 +178,46 @@
             <h1>Sommerhus Bookinger</h1>
             <p>Familiens feriekalender for 2025</p>
         </header>
-        <div class="table-container">
-            <table id="booking-table">
-                <thead>
-                    <tr>
-                        <th>Uge & Datoer</th>
-                        <th>Reserveret til</th>
-                        <th>Status</th>
-                        <th>Booket af & Detaljer</th>
-                    </tr>
-                </thead>
-                <tbody id="week-list-body"></tbody>
-            </table>
+
+        <div class="main-layout">
+            <div class="calendar-section">
+                <div class="table-container">
+                    <table id="booking-table">
+                        <thead>
+                            <tr>
+                                <th>Uge & Datoer</th>
+                                <th>Reserveret til</th>
+                                <th>Status</th>
+                                <th>Booket af & Detaljer</th>
+                            </tr>
+                        </thead>
+                        <tbody id="week-list-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="info-panel">
+                <h3>Regler & Information</h3>
+                <ol>
+                    <li>Lejen betales samtidigt med reservationen. Efter hver booking udsender booking masterene en opdateret oversigt.</li>
+                    <li>Booking af ferie kan tidligst ske den 1. januar samme år. Forudsat betalt kontingent.</li>
+                    <li>Ved afbud senere end 3 uger før ferien afholdes, tilbagebetales lejen kun, hvis sommerhuset bliver udlejet til andre. Eller ved afbud p.g.a. alvorlig sygdom.</li>
+                    <li>Alle ferieperioder ruller mellem familiegrenene.</li>
+                    <li>Datoer i helligdagsferien ændres for hvert år.</li>
+                    <li>
+                        Familiepriser pr. overnatning uanset antal personer:
+                        <ul>
+                            <li><b>kr. 150,-</b> Periode april - september</li>
+                            <li><b>kr. 75,-</b> Periode oktober - marts</li>
+                        </ul>
+                        Betaling for overnatninger SKAL ske samtidigt med bookingen.
+                    </li>
+                </ol>
+                <div class="info-highlight">
+                    <p>HUSK at der betales EL efter aflæsning ud over lejen. Prisen er kr. 4,00 / kw. Reguleres løbende!!!!!</p>
+                </div>
+            </div>
         </div>
+
         <div class="request-section">
             <h2>Anmod om Booking</h2>
             <form id="booking-form">
@@ -168,6 +240,7 @@
             </form>
             <p id="form-message" style="text-align:center; margin-top:1rem; font-weight:bold;"></p>
         </div>
+        
         <footer class="footer">
             <p>For ændringer, kontakt Thomas Grube på thomasgrube89@email.com</p>
             <div class="footer-buttons">
